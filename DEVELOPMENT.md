@@ -53,14 +53,6 @@ src/
 
 内容全部来自本目录的 `README.md`。README 未提供的细节（例如各钩子的具体职责）不编造，改为链接到官方文档。
 
-## Runtime policy
-
-- Bun 是安装、构建、开发、预览与类型检查的唯一运行时。
-- 不要在 CI 中加入 `setup-node`，也不要新增 `node ...` 命令。
-- 包脚本通过 `bun --bun` 强制 Bun 运行时，避免 Vite / TypeScript CLI 回退到 Node。
-- CI 使用 `bun --bun run build`；GitHub runner 即使自带 Node，也不能成为构建依赖。
-- 如遇仅支持 Node 的依赖，优先换成 Bun 兼容方案，或显式隔离该例外。
-
 ## 可访问性与 SEO
 
 - 全站 `:focus-visible` 焦点环，鼠标点击不显示，键盘导航必显示
