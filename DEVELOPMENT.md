@@ -20,7 +20,7 @@
 
 ```bash
 bun install
-bun run dev        # http://localhost:3000
+bun run dev        # http://localhost:5173
 bun run build      # 构建并预渲染全部路由，静态产物在 dist/client/
 bun run start      # 本地预览静态产物（vite preview）
 bun run typecheck  # tsc --noEmit

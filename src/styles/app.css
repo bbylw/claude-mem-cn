@@ -1,4 +1,6 @@
 :root {
+  color-scheme: dark;
+
   /* Base: a plain ink, not a tinted near-black standing in for black. */
   --ink: #0c0d0f;
   --ink-2: #121417;
@@ -9,15 +11,13 @@
   /* Text: warm paper against the cool ink, so the page has a temperature. */
   --paper: #e9e5dc;
   --paper-dim: #a5a49e;
-  --paper-faint: #6f6f6b;
+  --paper-faint: #85847e;
 
   /* One restrained accent. Brass, used only where something needs pointing at. */
   --brass: #c9a46a;
   --brass-wash: rgba(201, 164, 106, 0.13);
   --brass-rule: rgba(201, 164, 106, 0.4);
   --accent: var(--brass);
-
-  --ok: #8fae8b;
 
   --mono: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
@@ -33,7 +33,10 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 76px;
   -webkit-text-size-adjust: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule-strong) transparent;
 }
 
 body {
@@ -61,6 +64,29 @@ pre {
   color: #fff;
 }
 
+/* The browser chrome the page doesn't draw: scrollbars join the ink world. */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ink-3);
+  border: 1px solid var(--rule);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--rule-strong);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--ink);
+}
+
 /* ---------- accessibility primitives ---------- */
 
 :focus-visible {
@@ -70,6 +96,11 @@ pre {
 
 :focus:not(:focus-visible) {
   outline: none;
+}
+
+/* Brass on brass would vanish: the filled button gets a paper ring. */
+.btn--primary:focus-visible {
+  outline-color: var(--paper);
 }
 
 .sr-only {
@@ -249,38 +280,6 @@ h2.section-title {
   color: var(--brass);
 }
 
-/* ---------- hero ---------- */
-
-.hero {
-  padding: 84px 0 64px;
-  border-bottom: 1px solid var(--rule);
-}
-
-.hero-inner {
-  max-width: 780px;
-}
-
-.hero h1 {
-  font-size: clamp(31px, 4.6vw, 50px);
-  letter-spacing: -0.03em;
-  line-height: 1.16;
-  margin-bottom: 20px;
-}
-
-.hero p.lede {
-  font-size: 17px;
-  color: var(--paper-dim);
-  margin: 0 0 32px;
-  max-width: 60ch;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 40px;
-}
-
 .btn {
   display: inline-flex;
   align-items: center;
@@ -311,157 +310,6 @@ h2.section-title {
   color: var(--brass);
 }
 
-/* ---------- terminal ---------- */
-
-.terminal {
-  border: 1px solid var(--rule-strong);
-  background: #0a0b0d;
-}
-
-.terminal-bar {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 9px 13px;
-  border-bottom: 1px solid var(--rule);
-}
-
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--rule-strong);
-}
-
-.dot.r {
-  background: #8c4a44;
-}
-.dot.y {
-  background: #8c7a44;
-}
-.dot.g {
-  background: #4a7a52;
-}
-
-.terminal-title {
-  margin-left: 8px;
-  font-family: var(--mono);
-  font-size: 11.5px;
-  color: var(--paper-faint);
-}
-
-.terminal-body {
-  padding: 16px 18px;
-  font-family: var(--mono);
-  font-size: 13px;
-  line-height: 1.9;
-  overflow-x: auto;
-  color: #cfd2d6;
-  white-space: pre;
-  margin: 0;
-}
-
-.terminal-body .prompt {
-  color: var(--brass);
-  user-select: none;
-}
-
-.terminal-body .cmt {
-  color: var(--paper-faint);
-}
-
-.terminal-body .ok {
-  color: var(--ok);
-}
-
-/* ---------- rows (replaces the identical-card grid) ---------- */
-
-.rows {
-  border-top: 1px solid var(--rule);
-}
-
-.row {
-  display: grid;
-  grid-template-columns: minmax(180px, 240px) 1fr;
-  gap: 32px;
-  padding: 22px 0;
-  border-bottom: 1px solid var(--rule);
-  align-items: start;
-}
-
-.row h3 {
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.row p {
-  margin: 0;
-  color: var(--paper-dim);
-  font-size: 15px;
-  max-width: 62ch;
-}
-
-.row p + p {
-  margin-top: 8px;
-}
-
-.row-link {
-  display: inline-block;
-  margin-top: 8px;
-  font-size: 14px;
-  color: var(--brass);
-  border-bottom: 1px solid var(--brass-rule);
-}
-
-.row-link:hover {
-  border-bottom-color: var(--brass);
-}
-
-@media (max-width: 720px) {
-  .row {
-    grid-template-columns: 1fr;
-    gap: 8px;
-    padding: 18px 0;
-  }
-}
-
-/* ---------- numbered sequence (only where order is real) ---------- */
-
-.sequence {
-  counter-reset: step;
-  border-top: 1px solid var(--rule);
-}
-
-.sequence-item {
-  display: grid;
-  grid-template-columns: 28px 1fr;
-  gap: 18px;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--rule);
-  counter-increment: step;
-}
-
-.sequence-item::before {
-  content: counter(step) ".";
-  color: var(--paper-faint);
-  font-size: 14px;
-  font-variant-numeric: tabular-nums;
-  padding-top: 2px;
-}
-
-.sequence-item h3 {
-  font-size: 15.5px;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.sequence-item p {
-  margin: 0;
-  color: var(--paper-dim);
-  font-size: 14.5px;
-  max-width: 62ch;
-}
-
 /* ---------- code block ---------- */
 
 .codeblock {
@@ -483,7 +331,7 @@ h2.section-title {
   position: absolute;
   top: 9px;
   right: 9px;
-  padding: 4px 10px;
+  padding: 6px 12px;
   font-size: 11.5px;
   font-family: var(--sans);
   border: 1px solid var(--rule-strong);
@@ -507,7 +355,7 @@ h2.section-title {
 }
 
 .tab {
-  padding: 6px 12px;
+  padding: 8px 14px;
   border: 1px solid var(--rule);
   background: transparent;
   color: var(--paper-dim);
@@ -544,6 +392,7 @@ h2.section-title {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
 }
 
 .table-scroll:focus-visible {
@@ -555,6 +404,7 @@ h2.section-title {
   width: 100%;
   border-collapse: collapse;
   font-size: 14.5px;
+  font-variant-numeric: tabular-nums;
 }
 
 .table th {
@@ -716,7 +566,7 @@ h2.section-title {
   display: block;
   font-size: 14px;
   color: var(--paper-dim);
-  padding: 3px 0;
+  padding: 6px 0;
 }
 
 .footer-col a:hover {
@@ -744,6 +594,28 @@ h2.section-title {
 }
 
 /* ---------- misc ---------- */
+
+/* One shared motion feel for every interactive element. */
+.nav a,
+.header-cta,
+.btn,
+.tab,
+.copy-btn,
+.footer-col a,
+.docitem .l,
+.card-link,
+.lp-text-link,
+.lp-install-link {
+  transition:
+    color 0.16s ease,
+    border-color 0.16s ease,
+    background-color 0.16s ease,
+    transform 0.16s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
 
 .stack {
   display: flex;
@@ -777,29 +649,12 @@ h2.section-title {
   white-space: nowrap;
 }
 
-/* Plain inline list of names, not rounded pills. */
-.taglist {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 18px;
-  font-size: 14px;
-  color: var(--paper-dim);
-}
-
-.taglist span {
-  border-bottom: 1px solid var(--rule-strong);
-  padding-bottom: 1px;
-}
-
 @media (max-width: 860px) {
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
   .section {
     padding: 56px 0;
-  }
-  .hero {
-    padding: 56px 0 44px;
   }
 }
 
@@ -1289,7 +1144,7 @@ h2.section-title {
   bottom: 14px;
   padding: 5px 10px;
   border: 1px solid rgba(138, 100, 48, 0.55);
-  color: #8a6430;
+  color: #7a5a28;
   font-size: 10.5px;
   letter-spacing: 0.16em;
   transform: rotate(-6deg);
@@ -1523,16 +1378,6 @@ h2.section-title {
   box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
 }
 
-.lp-install-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 4px;
-  background: #8a6430;
-}
-
 .lp-install-card-head {
   display: flex;
   justify-content: space-between;
@@ -1552,7 +1397,7 @@ h2.section-title {
 .lp-install-stamp {
   padding: 5px 12px;
   border: 1px solid rgba(138, 100, 48, 0.55);
-  color: #8a6430;
+  color: #7a5a28;
   font-size: 10.5px;
   letter-spacing: 0.14em;
   transform: rotate(-4deg);
