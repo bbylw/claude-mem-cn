@@ -60,12 +60,14 @@ src/
 - `prefers-reduced-motion` 下关闭所有过渡与平滑滚动
 - 安装目标标签页：完整 ARIA tablist 语义、左右方向键 / Home / End 切换、`aria-controls` 关联面板
 - 表格：`<caption>`、`scope` 表头、窄屏横向滚动容器（可聚焦、有名字）
-- 装饰性 emoji 全部 `aria-hidden`
+- 装饰性 SVG 图标统一 `aria-hidden`，不参与读屏
 - 结构化数据 `SoftwareApplication` JSON-LD、`og:locale`、`twitter:card`
-- canonical 与 `og:url` 仅在 `site.url` 配置后输出，避免指向错误域名
+- canonical 仅在 `site.url` 配置后输出，避免指向错误域名
 
 ## 部署
 
-`bun run build` 会把全部路由预渲染为静态 HTML，产物在 `dist/client/`，可直接作为静态站点发布。
+`bun run build` 会把全部路由预渲染为静态 HTML，产物在 `dist/client/`。
 
-发布后把真实域名填到 `src/data/content.ts` 的 `site.url`，canonical 与 `og:url` 才会生效。
+站点通过 `.github/workflows/deploy.yml` 发布到 GitHub Pages：
+
+https://claude-mem.ndjp.net

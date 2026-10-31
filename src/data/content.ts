@@ -18,10 +18,7 @@ export const site = {
 export function canonicalLinks(path: string) {
   if (!site.url) return []
   const href = `${site.url.replace(/\/$/, '')}${path}`
-  return [
-    { rel: 'canonical', href },
-    { property: 'og:url', content: href },
-  ]
+  return [{ rel: 'canonical', href }]
 }
 
 export type Feature = {
