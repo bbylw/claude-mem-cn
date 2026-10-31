@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { Glyph } from '~/components/Glyph'
 import { features, site, canonicalLinks } from '~/data/content'
 
 export const Route = createFileRoute('/features')({
@@ -30,12 +31,15 @@ function Features() {
           <div className="grid grid--3">
             {features.map((f) => (
               <article className="card" key={f.title}>
-                <span className="card-icon">{f.icon}</span>
+                <span className="card-glyph">
+                  <Glyph name={f.icon} size={20} />
+                </span>
                 <h3>{f.title}</h3>
                 <p>{f.body}</p>
                 {f.link ? (
                   <a className="card-link" href={f.link.href} target="_blank" rel="noreferrer">
-                    {f.link.label} ↗
+                    {f.link.label}
+                    <Glyph name="external" size={12} className="link-glyph" />
                   </a>
                 ) : null}
               </article>
@@ -74,13 +78,17 @@ function Features() {
           <h2 className="section-title">默认本地，敏感内容可排除</h2>
           <div className="stack">
             <div className="callout">
-              <span className="callout-icon" aria-hidden="true">🔒</span>
+              <span className="callout-icon">
+                <Glyph name="lock" size={18} />
+              </span>
               <div>
                 使用 <code className="inline-code">&lt;private&gt;</code> 标签将敏感内容排除在存储之外。
               </div>
             </div>
             <div className="callout">
-              <span className="callout-icon" aria-hidden="true">🖼️</span>
+              <span className="callout-icon">
+                <Glyph name="image" size={18} />
+              </span>
               <div>
                 截图功能<strong>可选，默认关闭</strong>。开启后，工具截图转换后的副本保存在{' '}
                 <code className="inline-code">~/.claude-mem/media-v1/</code> 下，仅在开启云同步时上传至
@@ -88,7 +96,9 @@ function Features() {
               </div>
             </div>
             <div className="callout">
-              <span className="callout-icon" aria-hidden="true">👥</span>
+              <span className="callout-icon">
+                <Glyph name="team" size={18} />
+              </span>
               <div>
                 TeamBrain 中每个人自行选择分享哪些内容；个人请求与审查笔记保持独立。
               </div>

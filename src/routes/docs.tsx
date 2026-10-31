@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { CodeBlock } from '~/components/CodeBlock'
+import { Glyph } from '~/components/Glyph'
 import { docGroups, site, canonicalLinks } from '~/data/content'
 
 export const Route = createFileRoute('/docs')({
@@ -21,8 +22,8 @@ function Docs() {
           <p className="eyebrow">文档</p>
           <h1>完整文档索引</h1>
           <p>
-            📚{' '}
-            <a href={site.docs} target="_blank" rel="noreferrer" style={{ color: 'var(--accent)' }}>
+            <Glyph name="book" size={16} className="inline-glyph" />
+            <a href={site.docs} target="_blank" rel="noreferrer" style={{ color: 'var(--brass)' }}>
               查看完整文档
             </a>{' '}
             — 在官网浏览
@@ -64,7 +65,9 @@ function Docs() {
           <div className="grid grid--2" style={{ alignItems: 'start' }}>
             <div className="stack">
               <div className="callout">
-                <span className="callout-icon" aria-hidden="true">🩺</span>
+                <span className="callout-icon">
+                  <Glyph name="health" size={18} />
+                </span>
                 <div>
                   常见问题与解决方案，请参阅{' '}
                   <a
@@ -79,7 +82,9 @@ function Docs() {
                 </div>
               </div>
               <div className="callout">
-                <span className="callout-icon" aria-hidden="true">🐛</span>
+                <span className="callout-icon">
+                  <Glyph name="bug" size={18} />
+                </span>
                 <div>使用自动化生成器创建详尽的 bug 报告。</div>
               </div>
             </div>
@@ -133,7 +138,9 @@ function Docs() {
           </p>
           <div className="stack">
             <div className="callout">
-              <span className="callout-icon" aria-hidden="true">📄</span>
+              <span className="callout-icon">
+                <Glyph name="file" size={18} />
+              </span>
               <div>
                 完整细节请参阅{' '}
                 <a href={`${site.repo}/blob/main/LICENSE`} target="_blank" rel="noreferrer" style={{ color: 'var(--accent)' }}>
@@ -151,7 +158,9 @@ function Docs() {
               </div>
             </div>
             <div className="callout">
-              <span className="callout-icon" aria-hidden="true">🎵</span>
+              <span className="callout-icon">
+                <Glyph name="music" size={18} />
+              </span>
               <div>
                 <strong>关于 Ragtime 的说明</strong>：
                 <code className="inline-code">ragtime/</code> 目录采用{' '}
@@ -207,11 +216,13 @@ function Docs() {
       <section className="section">
         <div className="wrap">
           <div className="callout">
-            <span className="callout-icon" aria-hidden="true">🪙</span>
+            <span className="callout-icon">
+              <Glyph name="coin" size={18} />
+            </span>
             <div>
               <strong>关于 CMEM 代币？</strong> CMEM 是一个由第三方创建的代币，但已被 Claude-Mem 的创造者（Alex Newman，@thedotmack）官方接纳。该代币充当社区增长的催化剂，也是将 CMEM 带给最需要的开发者与知识工作者的载体。
               <br />
-              <span className="mono" style={{ fontSize: 12.5, color: 'var(--text-faint)' }}>
+              <span className="mono" style={{ fontSize: 12.5, color: 'var(--paper-faint)' }}>
                 官方 BASE CA: 0x76b1967eec0ccaeb001bbbb2b40dc4badba31ba3
               </span>
             </div>

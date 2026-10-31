@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { CopyButton } from '~/components/CodeBlock'
+import { Glyph } from '~/components/Glyph'
 import { components, features, installTargets, site, canonicalLinks } from '~/data/content'
 
 export const Route = createFileRoute('/')({
@@ -18,58 +19,6 @@ const catalog = [
   { k: '成本', v: '约十分之一的 token 成本' },
   { k: '位置', v: 'SQLite 与 Chroma 都在本地' },
 ]
-
-const featureGlyphs = [
-  <>
-    <path d="M4 8.5 12 4l8 4.5-8 4.5-8-4.5Z" />
-    <path d="M4 13l8 4.5 8-4.5" />
-    <path d="M4 17.5 12 22l8-4.5" />
-  </>,
-  <>
-    <path d="M4 5h16" />
-    <path d="M6.5 10h11" />
-    <path d="M9 15h6" />
-    <path d="M11 19h2" />
-  </>,
-  <>
-    <circle cx="11" cy="11" r="6" />
-    <path d="m16 16 4 4" />
-    <path d="M8 11h6" />
-  </>,
-  <>
-    <rect x="4" y="5" width="16" height="14" />
-    <path d="M4 9h16" />
-    <path d="M8 13h3v4H8z" />
-  </>,
-  <>
-    <circle cx="8" cy="8" r="2.2" />
-    <circle cx="16" cy="8" r="2.2" />
-    <circle cx="12" cy="16" r="2.2" />
-    <path d="M9.8 9.7 11 14M14.2 9.7 13 14M10.2 8h3.6" />
-  </>,
-  <>
-    <rect x="3.5" y="4.5" width="17" height="11" />
-    <path d="M8 19h8M12 15.5V19" />
-  </>,
-]
-
-function FeatureGlyph({ index }: { index: number }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      width="22"
-      height="22"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      {featureGlyphs[index]}
-    </svg>
-  )
-}
 
 function ArchiveStack() {
   return (
@@ -186,10 +135,10 @@ function Home() {
           </div>
 
           <div className="lp-features">
-            {features.slice(0, 6).map((feature, index) => (
+            {features.slice(0, 6).map((feature) => (
               <article className="lp-feature" key={feature.title}>
                 <span className="lp-glyph">
-                  <FeatureGlyph index={index} />
+                  <Glyph name={feature.icon} size={22} />
                 </span>
                 <div className="lp-feature-body">
                   <h3>{feature.title}</h3>

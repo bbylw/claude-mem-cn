@@ -1,3 +1,5 @@
+import type { GlyphName } from '~/components/Glyph'
+
 export const site = {
   name: 'Claude-Mem',
   tagline: '为 Claude Code 打造的持久化记忆压缩系统',
@@ -24,7 +26,7 @@ export function canonicalLinks(path: string) {
 }
 
 export type Feature = {
-  icon: string
+  icon: GlyphName
   title: string
   body: string
   link?: { label: string; href: string }
@@ -32,60 +34,60 @@ export type Feature = {
 
 export const features: Feature[] = [
   {
-    icon: '🧠',
+    icon: 'memory',
     title: '持久化记忆',
     body: '上下文在不同会话间得以保留。会话结束或重新连接，知识连续性不中断。',
   },
   {
-    icon: '📊',
+    icon: 'disclosure',
     title: '渐进式披露',
     body: '分层记忆检索，并可视化 token 成本。先看索引，再取详情。',
   },
   {
-    icon: '🔍',
+    icon: 'search',
     title: '智能搜索（默认）',
     body: '通过三步 mem-search 技能查询你的项目历史，按类型、日期、项目过滤。',
   },
   {
-    icon: '🖥️',
+    icon: 'work',
     title: '本地 My Work',
     body: '启动时会打印 worker URL，其中包含实时请求、进度、人工交接以及已保存的审查队列。记忆、会话与设置保留在 /viewer。',
     link: { label: '查看指南', href: 'https://docs.claude-mem.ai/usage/my-work' },
   },
   {
-    icon: '👥',
+    icon: 'team',
     title: 'TeamBrain',
     body: 'My Work 旁边一个可选的共享工作区，带有真实的团队工作列表、成员归属与关联发现。每个人自行选择分享哪些内容；个人请求与审查笔记保持独立。',
     link: { label: '创建团队', href: 'https://cmem.ai/teambrain/start' },
   },
   {
-    icon: '💻',
+    icon: 'desktop',
     title: 'Claude Desktop 技能',
     body: '从 Claude Desktop 对话中搜索记忆。',
   },
   {
-    icon: '🔒',
+    icon: 'lock',
     title: '隐私控制',
     body: '使用 <private> 标签将敏感内容排除在存储之外。',
   },
   {
-    icon: '🖼️',
+    icon: 'image',
     title: '截图（可选，默认关闭）',
     body: '将工具截图转换后的副本保存在 ~/.claude-mem/media-v1/ 下，仅在开启云同步时上传至 cmem.ai，并且仅在单独启用图像推理时才发送给观察器模型。',
     link: { label: '详情', href: 'https://docs.claude-mem.ai/configuration#screenshots-and-images-opt-in' },
   },
   {
-    icon: '⚙️',
+    icon: 'settings',
     title: '上下文配置',
     body: '精细控制注入哪些上下文。',
   },
   {
-    icon: '🤖',
+    icon: 'automation',
     title: '自动运行',
     body: '无需人工干预。钩子自动捕获、自动摘要、自动注入。',
   },
   {
-    icon: '🔗',
+    icon: 'reference',
     title: '引用',
     body: '通过 worker API 用 ID 引用过往观察，或在 Web 查看器中查看全部。',
   },

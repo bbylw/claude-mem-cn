@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { CodeBlock } from '~/components/CodeBlock'
+import { Glyph } from '~/components/Glyph'
 import { modes, settingsJson, site, canonicalLinks } from '~/data/content'
 
 export const Route = createFileRoute('/config')({
@@ -67,7 +68,9 @@ function Config() {
             </div>
           </div>
           <div className="callout" style={{ marginTop: 28 }}>
-            <span className="callout-icon" aria-hidden="true">🌐</span>
+            <span className="callout-icon">
+              <Glyph name="globe" size={18} />
+            </span>
             <div>
               特定语言的模式遵循 <code className="inline-code">code--[lang]</code> 形式，其中{' '}
               <code className="inline-code">[lang]</code> 是 ISO 639-1 语言代码（例如{' '}
@@ -77,7 +80,9 @@ function Config() {
             </div>
           </div>
           <div className="callout" style={{ marginTop: 14 }}>
-            <span className="callout-icon" aria-hidden="true">✅</span>
+            <span className="callout-icon">
+              <Glyph name="check" size={18} />
+            </span>
             <div>
               <code className="inline-code">code--zh</code>（简体中文）已内置——无需额外安装或更新插件。
             </div>
@@ -91,7 +96,9 @@ function Config() {
           <h2 className="section-title">模式定义在 plugin/modes/</h2>
           <CodeBlock code="ls ~/.claude/plugins/marketplaces/thedotmack/plugin/modes/" />
           <div className="callout" style={{ marginTop: 24 }}>
-            <span className="callout-icon" aria-hidden="true">🔄</span>
+            <span className="callout-icon">
+              <Glyph name="refresh" size={18} />
+            </span>
             <div>
               <strong>更改模式后</strong>，请重启 Claude Code 以应用新的模式配置。
             </div>
@@ -116,7 +123,8 @@ function Config() {
           />
           <p style={{ marginTop: 24 }}>
             <a className="card-link" href="https://docs.claude-mem.ai/configuration" target="_blank" rel="noreferrer">
-              完整配置指南 ↗
+              完整配置指南
+              <Glyph name="external" size={12} className="link-glyph" />
             </a>
           </p>
         </div>
@@ -128,7 +136,9 @@ function Config() {
           <h2 className="section-title">感知推送试点（LFG + Orifice）</h2>
           <div className="stack">
             <div className="callout">
-              <span className="callout-icon" aria-hidden="true">📡</span>
+              <span className="callout-icon">
+                <Glyph name="broadcast" size={18} />
+              </span>
               <div>
                 关键观察（<code className="inline-code">decision</code>、
                 <code className="inline-code">bugfix</code>、
@@ -139,7 +149,9 @@ function Config() {
               </div>
             </div>
             <div className="callout">
-              <span className="callout-icon" aria-hidden="true">🔕</span>
+              <span className="callout-icon">
+                <Glyph name="mute" size={18} />
+              </span>
               <div>
                 此功能不会写入 <code className="inline-code">profile.md</code>、用户记忆或项目记忆。可通过{' '}
                 <code className="inline-code">CLAUDE_MEM_GROK_BOT_AWARENESS_ENABLED=false</code> 关闭。

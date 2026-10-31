@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useRef, useState } from 'react'
 import { CodeBlock } from '~/components/CodeBlock'
+import { Glyph } from '~/components/Glyph'
 import { installTargets, requirements, site, canonicalLinks } from '~/data/content'
 
 export const Route = createFileRoute('/quickstart')({
@@ -96,7 +97,8 @@ function Quickstart() {
                   target="_blank"
                   rel="noreferrer noopener"
                 >
-                  {current.link.label} ↗
+                  {current.link.label}
+                  <Glyph name="external" size={12} className="link-glyph" />
                 </a>
               </p>
             ) : null}
@@ -110,8 +112,8 @@ function Quickstart() {
           <h2 className="section-title">30 天免费试用，之后可自选提供者</h2>
           <div className="stack">
             <div className="callout">
-              <span className="callout-icon" aria-hidden="true">
-                🔑
+              <span className="callout-icon">
+                <Glyph name="key" size={18} />
               </span>
               <div>
                 登录会为你的账户分配一个记忆密钥，并解锁带 <strong>30 天免费试用</strong> 的{' '}
@@ -120,8 +122,8 @@ function Quickstart() {
               </div>
             </div>
             <div className="callout">
-              <span className="callout-icon" aria-hidden="true">
-                ⏭️
+              <span className="callout-icon">
+                <Glyph name="skip" size={18} />
               </span>
               <div>
                 想跳过登录？传入明确的 <code className="inline-code">--provider</code> 参数、设置{' '}
@@ -130,8 +132,8 @@ function Quickstart() {
               </div>
             </div>
             <div className="callout">
-              <span className="callout-icon" aria-hidden="true">
-                ⚙️
+              <span className="callout-icon">
+                <Glyph name="provider" size={18} />
               </span>
               <div>
                 登录后，你可以选择记忆提供者——claude-mem 观察器、你自己的 OpenRouter 或 Gemini
@@ -182,8 +184,8 @@ function Quickstart() {
           </p>
           <div className="stack stack--lg">
             <div className="callout">
-              <span className="callout-icon" aria-hidden="true">
-                🪟
+              <span className="callout-icon">
+                <Glyph name="windows" size={18} />
               </span>
               <div>
                 Claude Code 钩子不需要 Git Bash。每个钩子直接运行{' '}
@@ -209,8 +211,8 @@ function Quickstart() {
       <section className="section">
         <div className="wrap">
           <div className="callout">
-            <span className="callout-icon" aria-hidden="true">
-              ⚠️
+            <span className="callout-icon">
+              <Glyph name="alert" size={18} />
             </span>
             <div>
               <strong>注意：</strong>Claude-Mem 也发布在 npm 上，但{' '}

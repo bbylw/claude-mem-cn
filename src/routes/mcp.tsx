@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { CodeBlock } from '~/components/CodeBlock'
+import { Glyph } from '~/components/Glyph'
 import { mcpExample, mcpSteps, site, canonicalLinks } from '~/data/content'
 
 export const Route = createFileRoute('/mcp')({
@@ -38,7 +39,7 @@ function McpPage() {
                   {s.tool}
                 </h3>
                 <p style={{ marginBottom: 10 }}>{s.title}</p>
-                <p style={{ fontSize: 13.5, color: 'var(--text-faint)' }}>{s.body}</p>
+                <p style={{ fontSize: 13.5, color: 'var(--paper-faint)' }}>{s.body}</p>
                 <span className="pill" style={{ marginTop: 14, display: 'inline-block' }}>
                   {s.cost}
                 </span>
@@ -73,7 +74,9 @@ function McpPage() {
                 </div>
               </div>
               <div className="callout">
-                <span className="callout-icon" aria-hidden="true">✓</span>
+                <span className="callout-icon">
+                  <Glyph name="check" size={18} />
+                </span>
                 <div>
                   先筛选再获取详情，可节省 <strong>约 10 倍 token</strong>。
                 </div>
@@ -132,7 +135,8 @@ function McpPage() {
               target="_blank"
               rel="noreferrer noopener"
             >
-              搜索工具指南 ↗
+              搜索工具指南
+              <Glyph name="external" size={12} className="link-glyph" />
             </a>
           </p>
         </div>

@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { Glyph } from '~/components/Glyph'
 import { components, site, canonicalLinks } from '~/data/content'
 
 export const Route = createFileRoute('/architecture')({
@@ -74,13 +75,11 @@ function Architecture() {
             <code className="inline-code">claude-mem hook claude-code &lt;event&gt;</code>
             ，由安装程序放到 PATH 上的一个小型启动器运行。
           </p>
-          <div className="grid grid--3">
+          <div className="pill-row">
             {hooks.map((h) => (
-              <div className="card" key={h}>
-                <h3 className="mono" style={{ fontSize: 15, color: 'var(--accent)' }}>
-                  {h}
-                </h3>
-              </div>
+              <span className="pill mono" key={h}>
+                {h}
+              </span>
             ))}
           </div>
           <p className="faint" style={{ marginTop: 20, fontSize: 13.5 }}>
@@ -122,7 +121,8 @@ function Architecture() {
               target="_blank"
               rel="noreferrer"
             >
-              架构概览 ↗
+              架构概览
+              <Glyph name="external" size={12} className="link-glyph" />
             </a>
           </p>
         </div>
