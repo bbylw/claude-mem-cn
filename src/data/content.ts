@@ -8,8 +8,7 @@ export const site = {
   node: '>=20.0.0',
   repo: 'https://github.com/thedotmack/claude-mem',
   docs: 'https://docs.claude-mem.ai/',
-  // 部署后设置真实域名（例如 https://claude-mem.example.com），canonical 与 og:url 才会输出。
-  url: '',
+  url: 'https://claude-mem.ndjp.net',
   author: { name: 'Alex Newman', handle: '@thedotmack', url: 'https://github.com/thedotmack' },
   description:
     'Claude-Mem 通过自动捕获工具使用过程中的观察记录、生成语义化摘要，并将其提供给未来的会话，从而在不同会话之间无缝保留上下文。这样，即使会话结束或重新连接，Claude 也能持续保持对项目的知识连续性。',

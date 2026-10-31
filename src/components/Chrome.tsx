@@ -44,7 +44,11 @@ export function Footer() {
           <div className="footer-col footer-brand">
             <div className="brand">
               <span className="brand-mark" aria-hidden="true">
-                CM
+                <svg viewBox="0 0 22 22" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M11 4 18 7.7l-7 3.7-7-3.7Z" />
+                  <path d="M4 11.1l7 3.7 7-3.7" />
+                  <path d="M4 14.7l7 3.7 7-3.7" />
+                </svg>
               </span>
               <span>{site.name}</span>
             </div>
