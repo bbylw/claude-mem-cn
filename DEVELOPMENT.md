@@ -62,11 +62,13 @@ src/
 - 表格：`<caption>`、`scope` 表头、窄屏横向滚动容器（可聚焦、有名字）
 - 装饰性 SVG 图标统一 `aria-hidden`，不参与读屏
 - 结构化数据 `SoftwareApplication` JSON-LD、`og:locale`、`twitter:card`
+- `og:image` / `twitter:image` 指向 `public/og-image.png`（1200×630，分享卡片配图）
+- `public/robots.txt` 与 `public/sitemap.xml`（7 个路由，部署后随构建产物一并发布）
 - canonical 仅在 `site.url` 配置后输出，避免指向错误域名
 
 ## 部署
 
-`bun run build` 会把全部路由预渲染为静态 HTML，产物在 `dist/client/`。
+`bun run build` 会把全部路由预渲染为静态 HTML，产物在 `dist/client/`；随后 `scripts/make-404.mjs` 把预渲染的 `index.html` 复制为 `dist/client/404.html`（注入 `noindex`）。GitHub Pages 对未知 URL 返回该文件，应用水合后由 TanStack Router 渲染 NotFound 组件。
 
 站点通过 `.github/workflows/deploy.yml` 发布到 GitHub Pages：
 
