@@ -4,6 +4,14 @@ import { Footer, Header } from '~/components/Chrome'
 import { site } from '~/data/content'
 import appCss from '~/styles/app.css?url'
 
+/** og:image 必须是绝对 URL，社交平台才会抓取。 */
+export const ogImage = {
+  url: `${site.url}/og-image.png`,
+  width: '1200',
+  height: '630',
+  alt: 'Claude-Mem — 让 Claude 记住整个项目的历史',
+}
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -18,8 +26,14 @@ export const Route = createRootRoute({
       { property: 'og:type', content: 'website' },
       { property: 'og:locale', content: 'zh_CN' },
       { property: 'og:site_name', content: site.name },
+      { property: 'og:image', content: ogImage.url },
+      { property: 'og:image:width', content: ogImage.width },
+      { property: 'og:image:height', content: ogImage.height },
+      { property: 'og:image:type', content: 'image/png' },
+      { property: 'og:image:alt', content: ogImage.alt },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:site', content: '@Claude_Memory' },
+      { name: 'twitter:image', content: ogImage.url },
       { name: 'robots', content: 'index, follow' },
     ],
     links: [
