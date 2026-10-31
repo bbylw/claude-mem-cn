@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "bun --bun vite dev",
-    "build": "bun --bun vite build",
+    "build": "bun --bun vite build && bun scripts/make-404.mjs",
     "start": "bun --bun vite preview",
     "typecheck": "bun --bun tsc --noEmit"
   },
